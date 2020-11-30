@@ -4,18 +4,18 @@ warning('off','all')
 
 rcwa=Rcwa;
 
-rcwa.lambda=0.750;
+rcwa.lambda=0.748;
 
 % disp(grating_period(rcwa.lambda));
 % rcwa.Lambda=grating_period(rcwa.lambda);
-rcwa.Lambda=0.558;
-rcwa.amplitude=12/1000;
-rcwa.depth=26/1000; 
+rcwa.Lambda=0.540;
+rcwa.amplitude=70/1000;
+rcwa.depth=150/1000; 
 
 rcwa.dn_layer_thickness=0.02;
 % rcwa.dn_layer_thickness=0;
 rcwa.n1=1.33; %water
-rcwa.number_of_orders=81; % odd number
+rcwa.number_of_orders=131; % odd number
 rcwa.drw_plt=2;
 % rcwa.theta0=3.38;
 rcwa.theta0=0;
@@ -41,13 +41,14 @@ rcwa.step=1/1000;
 % end
 
 rcwa.measurement=2;
+% rcwa.Compute()
 
 % rcwa.Spectrum();
 
 % disp('sen at wl')
 % disp(rcwa.Sensitivity_at_wl(false));
 
-rcwa.Sensitivity(false);
+rcwa.Sensitivity(true);
 % rcwa.Spectrum();
 
 % disp('S_s:');

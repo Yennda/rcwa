@@ -29,6 +29,9 @@ classdef Rcwa < handle
        saved_data
        S_s
        S_b
+       
+       diffraction_efficiencies_c=1; %1--D_R, 2--D_T
+       studying_order=0; %check minimum_number_of_orders
 
    end   
    properties (Access = public)
@@ -41,19 +44,20 @@ classdef Rcwa < handle
            ddn=0.005;
            obj.dn=0;
            obj.Compute;
-           ref1=obj.data(2);
+           ref1=obj.data(end);
            if bulk
-               obj.n1=obj.n1+ddn;
+%                obj.n1=obj.n1+ddn;
                obj.dn=ddn;
                obj.Compute;
-               obj.n1=obj.n1-ddn;
+%                obj.n1=obj.n1-ddn;
                obj.dn=0;
-               sen=(ref1-obj.data(2))/ddn;
+               % data(2)
+               sen=(ref1-obj.data(end))/ddn;
            else
                obj.dn=ddn;
                obj.Compute;
                obj.dn=0;
-               sen=(ref1-obj.data(2))/ddn;
+               sen=(ref1-obj.data(end))/ddn;
            end
            obj.measurement=mes;
        end
@@ -67,6 +71,7 @@ classdef Rcwa < handle
             depth=obj.depth;
             amplitude=obj.amplitude;
             n1=obj.n1;
+            dn = obj.dn; 
             ns=obj.n1+obj.dn;       
 
             
@@ -81,6 +86,9 @@ classdef Rcwa < handle
             maxi=obj.maxi;
             step=obj.step;
             change_of_index=obj.change_of_index;   
+            
+            diffraction_efficiencies_c = obj.diffraction_efficiencies_c;
+            studying_order = obj.studying_order;
             
             if drw_plt==2
                 set(0,'DefaultFigureVisible','off')
@@ -217,11 +225,19 @@ classdef Rcwa < handle
            end
        end
        function Spectrum(obj)
-%            obj.polarization=2;
-%            obj.Compute;
-%            data_TE=obj.data;
+           obj.polarization=2;
            
-%            obj.polarization=1;
+           de = obj.diffraction_efficiencies_c;
+           so = obj.studying_order;
+           obj.diffraction_efficiencies_c = 1;
+           obj.studying_order = 0;
+           obj.Compute;
+           obj.diffraction_efficiencies_c = de;
+           obj.studying_order = so;
+           
+           data_TE=obj.data;
+           
+           obj.polarization=1;
            obj.Compute;
            data_TM=obj.data;
            
@@ -233,9 +249,9 @@ classdef Rcwa < handle
            end
 
            figure
-%            plot(x_ax, data_TM(:,2)./data_TE(:,2), 'k', 'LineWidth', 2)
+           plot(x_ax, data_TM(:,2)./data_TE(:,2), 'k', 'LineWidth', 2)
 %            hold on
-           plot(x_ax, data_TM(:,2), 'LineWidth', 2)
+%            plot(x_ax, data_TM(:,2), 'LineWidth', 2)
 %            hold on
 %            plot(x_ax, data_TE(:,2), 'LineWidth', 2)           
 %            hold off

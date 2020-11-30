@@ -11,14 +11,14 @@ tic;
 
 %---------------------------------------------------
 % basic setup of the RCWA algorithm
-number_of_orders=81; % odd number
+number_of_orders=151; % odd number
 matrix_algorithm=1; % 1-S-matrix, 2-T-matrix
 change_matrix_base=1; % 1-s,p base, 2-x,y,z base
 %---------------------------------------------------
 % setup of the incident wave
-lambda=0.745; % wavelength (um)
+lambda=0.733; % wavelength (um)
 use_dispersion=1; % 1-yes, 2-no, see file setup_dispersion.m setup_dispersion.m
-theta0=64; % incident angle [degree]
+theta0=63.5; % incident angle [degree]
 polarization=1; % 0-conical diffraction, 1-TM polarization, 2-TE polarization
 faktorization=1; % 1-correct factorization
 
@@ -30,7 +30,7 @@ psi0=0; % polarization angle [degree], 0-TM polarization, 90-TE polarization
 plot_field_region_1=2; %1-yes, 2-no
 plot_field_region_2=2; %1-yes, 2-no
 plot_field_region_3=2; %1-yes, 2-no
-number_of_plotted_period=1; % how many periods
+number_of_plotted_period=3; % how many periods
 size_region_1=1; % times region 2 thickness
 size_region_3=1; % times region 2 thickness
 resolution_x=200; % x resolution of figure
@@ -52,7 +52,7 @@ planar_field_component=1;
 conical_field_component=2; %1-H_x, 2-H_y, 3-H_z, 4-E_x, 5-E_y, 6-E_z
 set_view_grating_boundaries=2; % 1-yes, 2-no, you can see grating boundaries when field is plotted
 
-get_electric_intensity=2; % 1-yes, 2-no
+get_electric_intensity=1; % 1-yes, 2-no
 get_local_absoption=2; % 1-yes, 2-no
 get_poynting_vector=2; % 1-yes, 2-no
 %---------------------------------------------------

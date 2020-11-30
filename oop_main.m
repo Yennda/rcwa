@@ -153,8 +153,8 @@ end
 
 % !!! setup of measured diff. order measurement>0
 
-diffraction_efficiencies_c=1; %1--D_R, 2--D_T
-studying_order=0; %check minimum_number_of_orders
+% diffraction_efficiencies_c=2; %1--D_R, 2--D_T
+% studying_order=-1; %check minimum_number_of_orders
 save_m=2; % 1 --- yes, 2 ---no
 save_as='jin';
 

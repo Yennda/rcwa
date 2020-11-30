@@ -45,7 +45,8 @@ function create_real_profile_thin_gold_SPRM(lambda,Lambda, n1, ns, dn_layer_thic
     % y=sin(2*pi./Lambda.*x).*depth/2+1.2*depth+thickness_metal;
 %     y=sin(2*pi./Lambda.*x).*amplitude/2+2*depth;
     
-    y=heaviside(sin(2*pi./Lambda.*x)).*amplitude/2+2*depth;
+%     y=heaviside(sin(2*pi./Lambda.*x)).*amplitude/2+2*depth;
+    y=sin(2*pi./Lambda.*x).*amplitude/2+2*depth;
     
     data(:,:,1)=[x' y'+dn_layer_thickness];
     data(:,:,2)=[x' y'];    
