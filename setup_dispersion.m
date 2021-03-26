@@ -44,7 +44,7 @@ gold=rix_spline(lambda,'gold_palik.txt');
 
 % [temp1,temp2,silver]=new_LD(lambda,'Ag',1,0,2);
 % [temp1,temp2,gold]=new_LD(lambda,'Al',5,1,2);
-% [temp1,temp2,chromium]=new_LD(lambda,'Cr',5,1,2);
+[temp1,temp2,chromium]=new_LD(lambda,'Cr',5,1,2);
 
 % chromium=1.4;
 % n3=gold;
@@ -55,12 +55,12 @@ gold=rix_spline(lambda,'gold_palik.txt');
 % nr=1.55;  %pro tlustou mrizku tu ma byt nr=gold
 
 % thin
-% nr=1.33;
-% n3=1.33;
+nr=1.33;
+n3=1.33;
 
 % thick
-n3=gold;
-nr=n3;
+% n3=gold;
+% nr=n3;
 
 % prism excitation
 % n3=1.33;

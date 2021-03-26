@@ -101,7 +101,11 @@ classdef Rcwa < handle
             
             switch measurement
                 case 0
-                    obj.data=diff_R;
+%                     obj.data=diff_R;
+%                     disp('disp:')
+%                     disp(obj.data)
+%                     disp(diff_T)
+                    obj.data = diff_T(2);
                 case 1
                     obj.data=data1;
                 case 2
@@ -148,12 +152,11 @@ classdef Rcwa < handle
     %            plot(x_ax, data_s(:,2),x_ax,data_init(:,2), 'LineWidth', 2)
                plot(x_ax, data_s(:,2), 'LineWidth', 2)
                ylabel('R')
-               ylim([0 1])
+%                ylim([0 1])
                hold on
 
-               sensitivity_s=(data_s(:,2)-data_init(:,2))/dn;
+               sensitivity_s=(data_s(:,2)-data_init(:,2))/dn
 
-               yyaxis right
                plot(x_ax, sensitivity_s(:,1), 'LineWidth', 2)
                hold off
 
@@ -250,7 +253,7 @@ classdef Rcwa < handle
 
            figure
            plot(x_ax, data_TM(:,2)./data_TE(:,2), 'k', 'LineWidth', 2)
-%            hold on
+           hold on
 %            plot(x_ax, data_TM(:,2), 'LineWidth', 2)
 %            hold on
 %            plot(x_ax, data_TE(:,2), 'LineWidth', 2)           
